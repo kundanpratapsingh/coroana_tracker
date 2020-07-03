@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../india-map.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import TotalGraph from "./totalGraph";
 
 const StateData = (props) => {
   const statesarray = props.statesArray;
@@ -15,7 +16,6 @@ const StateData = (props) => {
     "lastupdatedtime",
     "recovered",
   ];
-  useEffect(() => {}, []);
 
   const handlefilteredCountry = (e) => {
     setcountry(e.target.value);
@@ -24,7 +24,7 @@ const StateData = (props) => {
   const rendercards = (element, index) => {
     return (
       <div className="statecard" key={index}>
-        <Card style={{ width: "18rem" }}>
+        <Card style={{ width: "25rem" }}>
           <Card.Body>
             <Card.Title>{element.state}</Card.Title>
             {Array.map((text, index) => {
@@ -35,6 +35,9 @@ const StateData = (props) => {
               );
             })}
           </Card.Body>
+          <div>
+            <TotalGraph data={element} />
+          </div>
         </Card>
       </div>
     );
@@ -45,7 +48,6 @@ const StateData = (props) => {
     const filteredCountries = countiesArray.filter((a) => {
       return a.statecode.toLowerCase().indexOf(country.toLowerCase()) !== -1;
     });
-    console.log(filteredCountries);
     if (filteredCountries.length > 0) {
       return filteredCountries.map((element, index) =>
         rendercards(element, index)
@@ -60,8 +62,7 @@ const StateData = (props) => {
   };
 
   return (
-    <div className="containergggggg">
-      {console.log("Rendered")}
+    <div className="containerg">
       <div className="Search-country">
         <InputGroup>
           <InputGroup.Prepend>
