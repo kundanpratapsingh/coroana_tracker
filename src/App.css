@@ -24,8 +24,8 @@ div .App > h1 {
 }
 
 .statecard {
-  padding-right: 1rem;
   padding-bottom: 1rem;
+  padding-left: 1.5rem;
 }
 
 .Loading {
